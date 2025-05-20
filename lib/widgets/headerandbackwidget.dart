@@ -18,13 +18,19 @@ class HeaderandBackwidget extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: CircleAvatar(
-                radius: isTablet ? 50 : 25, // Larger back button for tablet
-                child: Icon(
-                  Icons.arrow_back,
-                  size: isTablet ? 50 : 25, // Larger icon for tablet
+              child: Container(
+                height: isTablet ? 80 : 40,
+                width: isTablet ? 80 : 40,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(),
                 ),
-                backgroundColor: const Color.fromARGB(255, 207, 207, 207),
+                child: Center(
+                  child: Icon(
+                    Icons.arrow_back_ios_sharp,
+                    size: isTablet ? 32 : 16,
+                  ),
+                ),
               ),
             ),
             SizedBox(width: isTablet ? 20 : 10), // More spacing for tablet

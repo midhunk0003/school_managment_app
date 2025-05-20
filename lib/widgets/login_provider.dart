@@ -9,8 +9,11 @@ class LoginProvider extends ChangeNotifier {
 
   String? _errorLoginmessage;
 
+  bool _isVisible = false;
+
   bool get isLogingLoading => _isloginLoading;
   String? get errorLoginMessage => _errorLoginmessage;
+  bool get isVidible => _isVisible;
 
   final List<UserModel> _users = [
     UserModel(
@@ -40,6 +43,12 @@ class LoginProvider extends ChangeNotifier {
   void setLoggingLoading(bool value) {
     _isloginLoading = value;
     notifyListeners();
+  }
+
+  void isVisible() {
+    _isVisible = !_isVisible;
+    notifyListeners();
+    print(isVidible);
   }
 
   Future<void> loginFunction(

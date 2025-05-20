@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schoolmanagment/core/constraints.dart';
 
 class ParentsMessageScreen extends StatefulWidget {
   const ParentsMessageScreen({Key? key}) : super(key: key);
@@ -109,61 +110,93 @@ class _ParentsMessageScreenState extends State<ParentsMessageScreen> {
                   itemCount: messages.length,
                   itemBuilder: (context, index) {
                     final message = messages[index];
-                    return ListTile(
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: isTablet ? 20.0 : 10.0,
-                        vertical: isTablet ? 12.0 : 8.0,
-                      ),
-                      leading: CircleAvatar(
-                        radius:
-                            isTablet
-                                ? 30
-                                : 20, // Adjust avatar size for tablets
-                        backgroundColor: Colors.blue,
-                        child: Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: isTablet ? 30 : 20,
-                        ),
-                      ),
-                      title: Text(
-                        message['name'] ?? '',
-                        style: TextStyle(
-                          fontSize: isTablet ? 20 : 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      subtitle: Text(
-                        message['message'] ?? '',
-                        style: TextStyle(fontSize: isTablet ? 18 : 14),
-                      ),
-                      trailing: Column(
-                        children: [
-                          Text(
-                            message['time'] ?? '',
-                            style: TextStyle(fontSize: isTablet ? 18 : 12),
-                          ),
-                          message['incommingMessage']
-                              ? Expanded(
-                                child: CircleAvatar(
-                                  backgroundColor: Color(0xFFEE742A),
-                                  child: Center(
-                                    child: Text(
-                                      '1',
-                                      style: TextStyle(color: Colors.white),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/tchatscreen');
+                      },
+                      child: Container(
+                        // decoration: BoxDecoration(border: Border.all()),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                // color: Colors.blue,
+                                child: Row(
+                                  children: [
+                                    CircleAvatar(radius: isTablet ? 50 : 25),
+                                    SizedBox(width: 12),
+                                    Flexible(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            message['name'] ?? '',
+                                            style: TextStyle(
+                                              color: kPrimaryTextColor,
+                                              fontSize: isTablet ? 36 : 18,
+                                            ),
+                                          ),
+                                          Text(
+                                            message['message'] ?? '',
+                                            style: TextStyle(
+                                              color: kPrimaryTextColor,
+                                              fontSize: isTablet ? 28 : 14,
+                                            ),
+                                            overflow:
+                                                TextOverflow
+                                                    .ellipsis, // or TextOverflow.fade
+                                            softWrap: true,
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              )
-                              : message['isRead']
-                              ? Icon(Icons.done_all, color: Colors.amber)
-                              : Icon(Icons.check),
-                        ],
+                              ),
+                            ),
+
+                            Container(
+                              // color: Colors.amber,
+                              child: Column(
+                                children: [
+                                  Text(message['time'] ?? ''),
+                                  message['incommingMessage']
+                                      ? CircleAvatar(
+                                        backgroundColor: Color(0xFFEE742A),
+                                        radius: 12,
+                                        child: Center(
+                                          child: Text(
+                                            '1',
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                      : message['isRead']
+                                      ? Icon(
+                                        Icons.done_all,
+                                        color: const Color.fromARGB(
+                                          255,
+                                          0,
+                                          0,
+                                          0,
+                                        ),
+                                      )
+                                      : Icon(Icons.check),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
                   separatorBuilder:
-                      (context, index) => SizedBox(height: isTablet ? 15 : 10),
+                      (context, index) => SizedBox(height: isTablet ? 42 : 21),
                 ),
               ),
             );

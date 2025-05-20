@@ -42,6 +42,7 @@ import 'package:schoolmanagment/teachers/presentation/provider/mark_attendance_p
 import 'package:schoolmanagment/teachers/presentation/provider/teacher_calender_provider.dart';
 import 'package:schoolmanagment/teachers/presentation/provider/teacherdashboard_provider.dart';
 import 'package:schoolmanagment/teachers/presentation/screens/calender_screen/teacher_calender_screen.dart';
+import 'package:schoolmanagment/teachers/presentation/screens/message_screen/t_chat_screen.dart';
 import 'package:schoolmanagment/teachers/presentation/screens/notification_screen/t_notification_screen.dart';
 import 'package:schoolmanagment/teachers/presentation/screens/profile_screen/t_profile_screen.dart';
 import 'package:schoolmanagment/teachers/presentation/screens/profile_screen/t_profile_show_screen.dart';
@@ -67,14 +68,14 @@ void main() async {
   // final SharedPreferences prefs = await SharedPreferences.getInstance();
   // await prefs.remove('role');
   // await prefs.remove('username');
-  // runApp(const MyApp());
-  runApp(
-    DevicePreview(
-      builder: (context) {
-        return const MyApp();
-      },
-    ),
-  );
+  runApp(const MyApp());
+  // runApp(
+  //   DevicePreview(
+  //     builder: (context) {
+  //       return const MyApp();
+  //     },
+  //   ),
+  // );
 }
 
 class MyApp extends StatelessWidget {
@@ -187,6 +188,8 @@ class MyApp extends StatelessWidget {
               return _customPageRoute(TProfileScreen());
             case '/tprofileshowscreen':
               return _customPageRoute(TProfileShowScreen());
+            case '/tchatscreen':
+              return _customPageRoute(TChatScreen());
 
             // parent start section
             case '/parentdashboardscreens':

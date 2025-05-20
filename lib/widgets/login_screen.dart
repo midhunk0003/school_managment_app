@@ -126,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             fontSize: isTablet ? 28 : 14,
                                           ),
                                         ),
-                                        // SizedBox(height: isTablet ? 24 : 12),
+                                        SizedBox(height: isTablet ? 24 : 12),
                                         TextFormField(
                                           controller: usernameController,
                                           decoration: InputDecoration(
@@ -149,13 +149,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                       ],
                                     ),
-                                    // SizedBox(height: isTablet ? 40 : 20),
+                                    SizedBox(height: isTablet ? 40 : 20),
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'User Name ',
+                                          'Password',
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontSize: isTablet ? 28 : 14,
@@ -164,9 +164,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                         SizedBox(height: isTablet ? 24 : 12),
                                         TextFormField(
                                           controller: passwordController,
+                                          obscureText:
+                                              loginProvider.isVidible
+                                                  ? false
+                                                  : true,
                                           decoration: InputDecoration(
-                                            suffixIcon: Icon(
-                                              Icons.visibility_off,
+                                            suffixIcon: IconButton(
+                                              onPressed: () {
+                                                loginProvider.isVisible();
+                                              },
+                                              icon: Icon(
+                                                loginProvider.isVidible
+                                                    ? Icons.visibility
+                                                    : Icons.visibility_off,
+                                              ),
                                             ),
                                             hintText: 'Enter Password',
                                             border: OutlineInputBorder(

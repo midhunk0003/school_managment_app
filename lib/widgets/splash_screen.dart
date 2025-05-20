@@ -27,6 +27,12 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
   }
 
+  // @override
+  // void dispose() {
+  //   _controller.dispose(); // dispose the animation controller here
+  //   super.dispose();
+  // }
+
   Future<void> _navigatToLoginOrHome() async {
     final sharedpref = await SharedPreferences.getInstance();
     final String? token = sharedpref.getString('username');
